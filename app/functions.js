@@ -2,11 +2,14 @@ exports = (typeof window === 'undefined') ? global : window;
 
 exports.functionsAnswers = {
   argsAsArray : function(fn, arr) {
-
+  return fn.apply(this, arr);
   },
 
-  speak : function(fn, obj) {
+  //EXPLANATION: '.apply()' calls the function with 'this' value and the arguments
+  //can be provided as an array
 
+  speak : function(fn, obj) {
+    return fn(obj.greeting, obj.name, '!!!');
   },
 
   functionFunction : function(str) {

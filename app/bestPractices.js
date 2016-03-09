@@ -8,28 +8,37 @@ exports = (typeof window === 'undefined') ? global : window;
 
 exports.bestPracticesAnswers = {
   globals : function() {
-    myObject = {
+  var myObject = {
       name : 'Jory'
     };
 
     return myObject;
   },
+//EXPLANATION: added "var" b/c a variable is automatically GLOBAL if you assign a value w/o
+//it being declared
+
 
   functions : function(flag) {
+    var getValue;
     if (flag) {
-      function getValue() { return 'a'; }
+      getValue = function  () { return 'a'; };
     } else {
-      function getValue() { return 'b'; }
+      getValue = function(){ return 'b'; };
     }
 
     return getValue();
   },
+//EXPLANATION: Declared variable on line 22, so that it's not overwritten when getValue() is used the
+//second time on a line 26. 
+
 
   parseInt : function(num) {
-    return parseInt(num);
+    return parseInt(num, 10);
   },
 
-  identity : function(val1, val2) {
+  //EXPLANATION: added 10 to radix which is decimals
 
+  identity : function(val1, val2) {
+    return val1 === val2;
   }
 };
